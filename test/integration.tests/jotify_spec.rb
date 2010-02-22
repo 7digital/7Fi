@@ -16,10 +16,9 @@ describe "The Jotify class" do
 		playlists.length.should be > 0
 	end
 
-	it "should allow to search Spotify" do
+	it "should allow me to search Spotify" do
 		search_results = @jotify.search('Chubby')
 
 		search_results.artists.length.should be > 0
 	end
-	
 end
