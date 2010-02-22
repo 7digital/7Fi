@@ -21,4 +21,5 @@ describe "The Jotify class" do
 
 		search_results.artists.length.should be > 0
 	end
+	
 end
