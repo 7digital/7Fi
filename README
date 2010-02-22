@@ -1,4 +1,5 @@
-* Requires rack, rack-test, rspec
 * Requires JRuby, http://jruby.org/download
 * RubyMine, add JRuby SDK: File > Settings > Ruby SDK and Gems > Add Ruby Interpreter > 
 Find JRuby.exe, e.g. C:\Program Files\jruby-1.4.0\bin\jruby.exe
+* Requires gems: rack, rack-test, rspec, sinatra, json-jruby. 
+To install these under jruby: jruby -S gem install sinatra
