@@ -4,28 +4,57 @@
 		%style
 			body { font-family: Arial; font-size: 10px;  }
 			textarea.results { width: 100%; height: 200px; }
-			div.playlists, div.seven_digital { border: 1px solid #d0d0d0; padding: 5px; margin:1px; }
+			div.playlists, div.seven_digital, div#status_message { border: 1px solid #d0d0d0; padding: 5px; margin:1px; }
 			div.playlist { border: 1px solid #d0d0d0; padding: 5px; margin:1px; }
 		%script{:language => "javascript", :type => "text/javascript", :src => "scriptaculous-js-1.8.3/lib/prototype.js"}
 		%script{:language => "javascript", :type => "text/javascript", :src => "scriptaculous-js-1.8.3/src/builder.js"}
+		%script{:language => "javascript", :type => "text/javascript", :src => "scriptaculous-js-1.8.3/src/effects.js"}
 		%script{:language => "javascript", :type => "text/javascript", :src => "scriptaculous-js-1.8.3/src/controls.js"}
 		%script{:language => "javascript", :type => "text/javascript", :src => "scriptaculous-js-1.8.3/src/dragdrop.js"}
-		%script{:language => "javascript", :type => "text/javascript", :src => "scriptaculous-js-1.8.3/src/effects.js"}
 		%script{:language => "javascript", :type => "text/javascript", :src => "scriptaculous-js-1.8.3/src/scriptaculous.js"}
 		%script{:language => "javascript", :type => "text/javascript", :src => "scriptaculous-js-1.8.3/src/slider.js"}
 		%script{:language => "javascript", :type => "text/javascript", :src => "scriptaculous-js-1.8.3/src/sound.js"}
 		:javascript
-			var playlists, seven_digital;
+			var playlists, seven_digital, status_message;
 			
 			document.observe('dom:loaded', function() {
 				playlists       = $('playlists');
 				seven_digital   = $('seven_digital');
+				status_message  = $('status_message');
 
 				playlists.update("Playlists'll go here");
 				seven_digital.update("And 7digital guff'll go here");
+
+				loadPlaylists();
 			});
+
+			function loadPlaylists() {
+				var url = "/playlists.json";
+
+				showStatus('Loading playlists...');
+
+				var req = new Ajax.Request(url, {
+					method      : 'get',
+					contentType : 'application/json',
+					onSuccess   : function(result) {
+						showStatus('done <' + result.status + '>, binding...');
+						showStatus(result.responseJSON);
+					},
+					onFailure   : function(result) { }
+				});
+			}
+
+			function bindPlaylists(playlists) {
+				showStatus('Still binding...');
+				showStatus(null == playlists);			
+			}
+
+			function showStatus(message) {
+				status_message.update(message);
+			}
 	%body
 		%div.playlists{:id => "playlists"}
 		%div.seven_digital{:id => "seven_digital"}
+		%div{:id => "status_message"}
 
 			
