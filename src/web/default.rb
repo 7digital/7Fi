@@ -15,7 +15,8 @@ class Default
 		api = SevenDigital.new
 		
 		model = HomeModel.new("Home", api.search('chubby').xml)
-		
-		haml :home, :locals => { :title => "Home", :model => model }
+		all_playlists = Jotify.new.playlists
+
+		haml :home, :locals => { :title => "Home", :model => model, :spotify_playlists => all_playlists }
 	end
 end
