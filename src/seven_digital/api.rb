@@ -13,17 +13,18 @@ class SevenDigital
 	import 'org.coriander.oauth.core.Credential'
 	import 'java.net.URI'
 
-	def initialize
-		@consumer = Consumer.new(SystemCredentialFinder.new.find)
+	def initialize(consumer = Consumer.new(SystemCredentialFinder.new.find))
+		@consumer = consumer
 	end
 
 	def search(for_what)
-		signed = @consumer.sign(URI.new("http://api.7digital.com/1.2/artist/search?q=#{for_what}&country=GB"))
-
-		puts "Signed as: #{signed}"
+		signed = @consumer.sign(URI.new("#{API_URL}/artist/search?q=#{for_what}"))
 
 		response = TheInternet.new.get(signed)
 
 		SearchResult.new(response)
 	end
+
+	private
+	API_URL = 'http://api.7digital.com/1.2'
 end
