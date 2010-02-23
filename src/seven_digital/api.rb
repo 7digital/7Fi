@@ -4,8 +4,8 @@ require File.expand_path(File.dirname(__FILE__) + '/../../bin/coriander-oauth-2.
 require File.expand_path(File.dirname(__FILE__) + '/../../bin/commons-codec-1.4.jar')
 
 require File.expand_path(File.dirname(__FILE__) + '/../preferences')
-require File.expand_path(File.dirname(__FILE__) + '/system_credential_finder')
-require File.expand_path(File.dirname(__FILE__) + '/the_internet')
+require File.expand_path(File.dirname(__FILE__) + '/net/system_credential_finder')
+require File.expand_path(File.dirname(__FILE__) + '/net/the_internet')
 
 class SevenDigital
 	import 'org.coriander.oauth.Consumer'
