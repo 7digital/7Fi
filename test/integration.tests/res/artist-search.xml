@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<response status="ok" version="1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://api.7digital.com/1.2/static/7digitalAPI.xsd">
+	<searchResults>
+		<page>1</page>
+		<pageSize>10</pageSize>
+		<totalItems>13</totalItems>
+		<searchResult>
+			<type>artist</type>
+			<artist id="134483">
+				<name>Chubby</name>
+				<sortName>Chubby</sortName>
+				<url>http://www.7digital.com/artists/chubby/?partner=712</url>
+				<image>
+					http://cdn.7static.com/static/img/artistimages/00/001/344/0000134483_150.jpg
+				</image>
+			</artist>
+		</searchResult>
+		<searchResult>
+			<type>artist</type>
+			<artist id="41217">
+				<name>Chubby Checker</name>
+				<sortName>Chubby Checker</sortName>
+				<url>http://www.7digital.com/artists/chubby-checker/?partner=712</url>
+				<image>
+					http://cdn.7static.com/static/img/artistimages/00/000/412/0000041217_150.jpg
+				</image>
+			</artist>
+		</searchResult>
+		<searchResult>
+			<type>artist</type>
+			<artist id="54520">
+				<name>Popa Chubby</name>
+				<sortName>Popa Chubby</sortName>
+				<url>http://www.7digital.com/artists/popa-chubby/?partner=712</url>
+				<image>
+					http://cdn.7static.com/static/img/artistimages/00/000/545/0000054520_150.jpg
+				</image>
+			</artist>
+		</searchResult>
+		<searchResult>
+			<type>artist</type>
+			<artist id="478847">
+				<name>B-Love Da Chubby Hustla</name>
+				<sortName>B-Love Da Chubby Hustla</sortName>
+				<url>
+					http://www.7digital.com/artists/b-love-da-chubby-hustla/?partner=712
+				</url>
+				<image>
+					http://cdn.7static.com/static/img/artistimages/00/004/788/0000478847_150.jpg
+				</image>
+			</artist>
+		</searchResult>
+		<searchResult>
+			<type>artist</type>
+			<artist id="177629">
+				<name>Chubby Jackson</name>
+				<sortName>Chubby Jackson</sortName>
+				<url>http://www.7digital.com/artists/chubby-jackson/?partner=712</url>
+				<image>
+					http://cdn.7static.com/static/img/artistimages/00/001/776/0000177629_150.jpg
+				</image>
+			</artist>
+		</searchResult>
+		<searchResult>
+			<type>artist</type>
+			<artist id="187952">
+				<name>Chubby Dubz</name>
+				<sortName>Chubby Dubz</sortName>
+				<url>http://www.7digital.com/artists/chubby-dubz/?partner=712</url>
+				<image>
+					http://cdn.7static.com/static/img/artistimages/00/001/879/0000187952_150.jpg
+				</image>
+			</artist>
+		</searchResult>
+		<searchResult>
+			<type>artist</type>
+			<artist id="130488">
+				<name>Chris &amp; Chubby</name>
+				<sortName>Chris &amp; Chubby</sortName>
+				<url>
+					http://www.7digital.com/artists/chris-and-chubby-(1)/?partner=712
+				</url>
+				<image>
+					http://cdn.7static.com/static/img/artistimages/00/001/304/0000130488_150.jpg
+				</image>
+			</artist>
+		</searchResult>
+		<searchResult>
+			<type>artist</type>
+			<artist id="14468">
+				<name>Chubby Carrier</name>
+				<sortName>Chubby Carrier</sortName>
+
+				<url>http://www.7digital.com/artists/chubby-carrier/?partner=712</url>
+				<image>
+					http://cdn.7static.com/static/img/artistimages/00/000/144/0000014468_150.jpg
+				</image>
+			</artist>
+		</searchResult>
+		<searchResult>
+			<type>artist</type>
+			<artist id="458610">
+				<name>King Chubby</name>
+				<sortName>King Chubby</sortName>
+				<url>http://www.7digital.com/artists/king-chubby/?partner=712</url>
+				<image>
+					http://cdn.7static.com/static/img/artistimages/00/004/586/0000458610_150.jpg
+				</image>
+			</artist>
+		</searchResult>
+		<searchResult>
+			<type>artist</type>
+			<artist id="329512">
+				<name>Chubby Jackson\'s All Star Band</name>
+				<sortName>Chubby Jackson\'s All Star Band</sortName>
+				<url>
+					http://www.7digital.com/artists/chubby-jackson-s-all-star-band/?partner=712
+				</url>
+				<image>
+					http://cdn.7static.com/static/img/artistimages/00/003/295/0000329512_150.jpg
+				</image>
+			</artist>
+		</searchResult>
+	</searchResults>
+</response>
