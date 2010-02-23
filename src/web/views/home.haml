@@ -25,7 +25,7 @@
 				playlists.update("Playlists'll go here");
 				seven_digital.update("And 7digital guff'll go here");
 
-				loadPlaylists();
+				//loadPlaylists();
 			});
 
 			function loadPlaylists() {
@@ -45,15 +45,40 @@
 			}
 
 			function bindPlaylists(playlists) {
-				showStatus('Still binding...');
 				showStatus(null == playlists);			
 			}
 
+			function search() {
+				var query = $('q').value;
+
+				if (null == query || query == '') {
+					return;
+				}
+
+				showStatus("Searching...");
+
+				var url = "7digital/search/artists?q=" + query;
+
+				var req = new Ajax.Request(url, {
+					method      : 'get',
+					contentType : 'application/json',
+					onSuccess   : function(result) {
+						showStatus('');
+						seven_digital.update(result.responseJSON.toString());
+					},
+					onFailure   : function(result) {
+						showStatus('Error: ' + result.status);
+					}
+				});
+			}
+			
 			function showStatus(message) {
 				status_message.update(message);
 			}
 	%body
 		%div.playlists{:id => "playlists"}
+		%input{:type => "textbox", :id => 'q'}
+		%input{:type => "button", :onclick => "search(); return false;", :value => 'Go' }
 		%div.seven_digital{:id => "seven_digital"}
 		%div{:id => "status_message"}
 
