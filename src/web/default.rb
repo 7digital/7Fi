@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'haml'
 require 'sinatra'
+require 'activesupport'
 require 'sinatra/base'
 require 'jotify'
 require 'json'
@@ -39,6 +40,24 @@ class Default
 			}.to_json
 		ensure
 			jotify.close unless jotify.nil?	
+		end
+	end
+
+	get '/7digital/search/artists' do
+		response["Cache-Control"] = "max-age=3600, public"
+		response["Expires"] = "3600"
+		content_type :json
+
+		if (params[:q].nil?)
+			content_type :html
+			response["Status"] = "400"
+		else
+			results = SevenDigital.new.search(params[:q])
+
+			{
+				'status' => 'OK',
+				'results' => Hash.from_xml(results.xml).to_json 
+			}.to_json
 		end
 	end
 end
