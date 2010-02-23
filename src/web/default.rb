@@ -1,6 +1,8 @@
 require 'rubygems'
 require 'haml'
 require 'sinatra'
+require 'jotify'
+require File.dirname(__FILE__) + '/../../src/seven_digital/api'
 require File.dirname(__FILE__) + '/models/home_model'
 
 class Default
@@ -10,6 +12,10 @@ class Default
 		:port           => 82
 
 	get '/default.html' do
-		haml :home, :locals => { :title => "xxx" }
+		api = SevenDigital.new
+		
+		model = HomeModel.new("Home", api.search('chubby').xml)
+		
+		haml :home, :locals => { :title => "Home", :model => model }
 	end
 end

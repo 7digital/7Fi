@@ -1,11 +1,8 @@
 %html
 	%head
-		%title=#{locals[:title]}
+		%title=locals[:model].title
 		%style
 			body { font-family: Tahoma; color:#d0d0d0; }
 	%body
-		%p
-			Results:
-		%div= #{locals[:title]}
-		%p= "Hello: #{@hello}"
-		%p= "Test: #{@test}"
+		Results:
+		%p=locals[:model].results
