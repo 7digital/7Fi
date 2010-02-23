@@ -2,11 +2,30 @@
 	%head
 		%title=locals[:model].title
 		%style
-			body { font-family: Tahoma;  }
+			body { font-family: Arial; font-size: 10px;  }
 			textarea.results { width: 100%; height: 200px; }
-			div.playlists { border: 1px solid #d0d0d0; padding: 5px; }
-	%body
-		%textarea.results=locals[:model].results
+			div.playlists, div.seven_digital { border: 1px solid #d0d0d0; padding: 5px; margin:1px; }
+			div.playlist { border: 1px solid #d0d0d0; padding: 5px; margin:1px; }
+		%script{:language => "javascript", :type => "text/javascript", :src => "scriptaculous-js-1.8.3/lib/prototype.js"}
+		%script{:language => "javascript", :type => "text/javascript", :src => "scriptaculous-js-1.8.3/src/builder.js"}
+		%script{:language => "javascript", :type => "text/javascript", :src => "scriptaculous-js-1.8.3/src/controls.js"}
+		%script{:language => "javascript", :type => "text/javascript", :src => "scriptaculous-js-1.8.3/src/dragdrop.js"}
+		%script{:language => "javascript", :type => "text/javascript", :src => "scriptaculous-js-1.8.3/src/effects.js"}
+		%script{:language => "javascript", :type => "text/javascript", :src => "scriptaculous-js-1.8.3/src/scriptaculous.js"}
+		%script{:language => "javascript", :type => "text/javascript", :src => "scriptaculous-js-1.8.3/src/slider.js"}
+		%script{:language => "javascript", :type => "text/javascript", :src => "scriptaculous-js-1.8.3/src/sound.js"}
+		:javascript
+			var playlists, seven_digital;
+			
+			document.observe('dom:loaded', function() {
+				playlists       = $('playlists');
+				seven_digital   = $('seven_digital');
 
-		%div.playlists=locals[:spotify_playlists]
+				playlists.update("Playlists'll go here");
+				seven_digital.update("And 7digital guff'll go here");
+			});
+	%body
+		%div.playlists{:id => "playlists"}
+		%div.seven_digital{:id => "seven_digital"}
+
 			
