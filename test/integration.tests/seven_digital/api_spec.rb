@@ -8,7 +8,7 @@ describe "Assuming I have valid API key, then api" do
 
 		search_result.should_not be_nil
 
-		search_result.xml.should include('<response status="ok"')
-		search_result.xml.should include("Chubby Jackson")
+		search_result.should include('<response status="ok"')
+		search_result.should include("Chubby Jackson")
 	end
 end

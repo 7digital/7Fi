@@ -5,7 +5,6 @@ require File.expand_path(File.dirname(__FILE__) + '/../../bin/commons-codec-1.4.
 
 require File.expand_path(File.dirname(__FILE__) + '/../preferences')
 require File.expand_path(File.dirname(__FILE__) + '/system_credential_finder')
-require File.expand_path(File.dirname(__FILE__) + '/search_result')
 require File.expand_path(File.dirname(__FILE__) + '/the_internet')
 
 class SevenDigital
@@ -20,9 +19,7 @@ class SevenDigital
 	def search(for_what)
 		signed = @consumer.sign(URI.new("#{API_URL}/artist/search?q=#{for_what}"))
 
-		response = TheInternet.new.get(signed)
-
-		SearchResult.new(response)
+		TheInternet.new.get(signed)
 	end
 
 	private

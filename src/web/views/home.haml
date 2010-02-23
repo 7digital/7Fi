@@ -64,7 +64,7 @@
 					contentType : 'application/json',
 					onSuccess   : function(result) {
 						showStatus('');
-						seven_digital.update(result.responseJSON.toString());
+						showSearchResults(result);
 					},
 					onFailure   : function(result) {
 						showStatus('Error: ' + result.status);
@@ -74,6 +74,20 @@
 			
 			function showStatus(message) {
 				status_message.update(message);
+			}
+			
+			function showSearchResults(results) {
+				var temp = '';
+				
+				seven_digital.update(results.responseJSON.results.toSource());
+				
+				return;
+				
+				for (result in result.searchResults) {
+					temp += temp.name	
+				}
+				
+				seven_digital.update(temp);
 			}
 	%body
 		%div.playlists{:id => "playlists"}
