@@ -6,6 +6,7 @@ require 'sinatra/base'
 require 'jotify'
 require 'json'
 require File.dirname(__FILE__) + '/../../src/seven_digital/api'
+require File.dirname(__FILE__) + '/../../src/seven_digital/xml/search_result_adapter'
 require File.dirname(__FILE__) + '/models/home_model'
 
 # TODO: Consider this example: http://github.com/ben-biddington/spotify-api/blob/master/lib/jotify/api.rb
@@ -52,11 +53,11 @@ class Default
 			content_type :html
 			response["Status"] = "400"
 		else
-			results = SevenDigital.new.search(params[:q])
+			results = SearchResultAdapter.new.to_json(SevenDigital.new.search(params[:q]))
 
 			{
 				'status' => 'OK',
-				'results' => Hash.from_xml(results.xml).to_json 
+				'results' => (results).to_json
 			}.to_json
 		end
 	end
