@@ -17,7 +17,7 @@ class SevenDigital
 	end
 
 	def search(for_what)
-		signed = @consumer.sign(URI.new("#{API_URL}/artist/search?q=#{for_what}"))
+		signed = @consumer.sign(URI.new("#{API_URL}/artist/search?pageSize=50&q=#{for_what}"))
 
 		TheInternet.new.get(signed)
 	end
