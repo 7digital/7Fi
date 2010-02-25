@@ -11,7 +11,7 @@ describe "Adapting from XML" do
 	it "should provide the number of results" do
 		adapter = SearchResultAdapter.new
 
-		result = adapter.to_json(xml)
+		result = adapter.to_artists(xml)
 
 		result.count.should equal(10)
 	end
@@ -19,7 +19,7 @@ describe "Adapting from XML" do
 	it "should return Chubby Checker with correct image and id" do
 		adapter = SearchResultAdapter.new
 
-		result = adapter.to_json(xml)
+		result = adapter.to_artists(xml)
 
 		result.results[1].id.should match('41217')
 		result.results[1].name.should match("Chubby Checker")

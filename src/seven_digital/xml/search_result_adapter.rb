@@ -3,38 +3,26 @@ require File.expand_path(File.dirname(__FILE__) + '/../../../bin/dom4j-1.6.1.jar
 require File.expand_path(File.dirname(__FILE__) + '/../../../src/seven_digital/search/artist')
 require File.expand_path(File.dirname(__FILE__) + '/../../../src/seven_digital/search/search_results')
 
+require 'hpricot'
+
 class SearchResultAdapter
-	import 'org.w3c.dom.Document'
-	import 'org.jaxen.dom4j.Dom4jXPath'
-	import 'org.dom4j.Element'
-	import 'org.dom4j.Document'
-	import 'org.dom4j.DocumentHelper'
-
-	def to_json(result)
-		document = to_document(result)
-
-		query = "//response/searchResults/searchResult"
-
-		xpath = Dom4jXPath.new(query)
-
-		result_nodes = xpath.selectNodes(document)
-
+	def to_artists(xml)
 		artists = []
 
-		result_nodes.each do |node|
-			artists << Artist.new(
-				node.selectSingleNode('artist').attributeValue('id'),
-				node.selectSingleNode('artist/name').getText(),
-				node.selectSingleNode('artist/image').getText()
-			)
+		Hpricot(xml).search("//response/searchResults/searchResult").each do |artist_node|
+			#artists << to_artist(artist_node)
 		end
 
-		SearchResults.new(result_nodes.size, artists)
+		SearchResults.new(artists.size, artists)
 	end
 
 	private
 
-	def to_document(xml)
-		DocumentHelper.parseText(xml)
+	def to_artist(artist_node)
+		Artist.new(
+			artist_node.at('artist').get_attribute('id'),
+			artist_node.at('artist/name').inner_html,
+			artist_node.at('artist/image').inner_html
+		)
 	end
 end
