@@ -1,5 +1,3 @@
-require File.expand_path(File.dirname(__FILE__) + '/../../../bin/jaxen-1.1.1.jar')
-require File.expand_path(File.dirname(__FILE__) + '/../../../bin/dom4j-1.6.1.jar')
 require File.expand_path(File.dirname(__FILE__) + '/../../../src/seven_digital/search/artist')
 require File.expand_path(File.dirname(__FILE__) + '/../../../src/seven_digital/search/search_results')
 
