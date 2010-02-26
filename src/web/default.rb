@@ -53,11 +53,11 @@ class Default
 			content_type :html
 			response["Status"] = "400"
 		else
-			results = SearchResultAdapter.new.to_json(SevenDigital.new.search(params[:q]))
+			results = SearchResultAdapter.new.to_artists(SevenDigital.new.search(params[:q]))
 
 			{
 				'status' => 'OK',
-				'results' => (results).to_json
+				'results' => (results)
 			}.to_json
 		end
 	end

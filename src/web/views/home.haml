@@ -78,22 +78,30 @@
 			
 			function showSearchResults(results) {
 				var temp = '';
-				
-				seven_digital.update(results.responseJSON.results.toSource());
-				
-				return;
-				
-				for (result in result.searchResults) {
-					temp += temp.name	
+
+				if ($("container") != null) {
+					$("container").remove();
 				}
-				
-				seven_digital.update(temp);
+
+				seven_digital.update(results.responseJSON.results);
+
+				var r = results.responseJSON.results.results;
+
+				$(seven_digital_out).insert(new Element("div", {id : "container"}));
+
+				for (var i=0; i<=results.responseJSON.results.count; i++) {
+					temp += r[i].name  + " : " + r[i].picture_url;
+					$("container").insert(new Element("img", { src : r[i].picture_url}));
+				}
+				                
+				return;
 			}
 	%body
 		%div.playlists{:id => "playlists"}
 		%input{:type => "textbox", :id => 'q'}
 		%input{:type => "button", :onclick => "search(); return false;", :value => 'Go' }
+		%div.seven_digital{:id => "seven_digital_out"}
 		%div.seven_digital{:id => "seven_digital"}
 		%div{:id => "status_message"}
 
-			
+
