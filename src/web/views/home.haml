@@ -83,22 +83,53 @@
 					$("container").remove();
 				}
 
-				seven_digital.update(results.responseJSON.results);
+				//seven_digital.update(results.responseJSON.results);
 
 				var r = results.responseJSON.results.results;
 
-				$(seven_digital_out).insert(new Element("div", {id : "container"}));
+				$(seven_digital).insert(new Element("div", {id : "container"}));
 
 				for (var i=0; i<=results.responseJSON.results.count; i++) {
-					temp += r[i].name  + " : " + r[i].picture_url;
-					$("container").insert(new Element("img", { src : r[i].picture_url}));
+					var artist = Builder.node('h1', r[i].name, [Builder.node("img", { src : r[i].picture_url})]);
+					var artist_list = Builder.node('div', {id : "artist_" + r[i].id}, artist);
+					$("container").insert(artist_list);
+					get_tracks_for(r[i].id);
 				}
-				                
+
 				return;
 			}
+
+			function get_tracks_for(artist_id) {
+				var url = "7digital/artist/toptracks?artistid=" + artist_id;
+
+				var req = new Ajax.Request(url, {
+					method      : 'get',
+					contentType : 'application/json',
+					onSuccess   : function(result) {
+						$("artist_" + artist_id).insert(
+							track_to_list(result.responseJSON.results.results)
+						);
+					},
+					onFailure   : function(result) {
+						showStatus('Error: ' + result.status);
+					}
+				});
+			}
+
+			function track_to_list(tracks) {
+				var list = Builder.node('ul');
+				for (var i=0; i<tracks.length; i++) {
+					list.insert(Builder.node(
+						'li',
+						[Builder.node('a', {href : tracks[i].stream_url}, tracks[i].name)])
+					);
+				}
+				return list;
+			}
+
 	%body
 		%div.playlists{:id => "playlists"}
-		%input{:type => "textbox", :id => 'q'}
+		%input{:type => "textbox", :value => "blue", :id => 'q'}
 		%input{:type => "button", :onclick => "search(); return false;", :value => 'Go' }
 		%div.seven_digital{:id => "seven_digital_out"}
 		%div.seven_digital{:id => "seven_digital"}

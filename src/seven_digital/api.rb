@@ -22,6 +22,12 @@ class SevenDigital
 		TheInternet.new.get(signed)
 	end
 
+	def artist_top_tracks(artist_id)
+		signed = @consumer.sign(URI.new("#{API_URL}/artist/toptracks?artistid=#{artist_id}"))
+
+		TheInternet.new.get(signed)
+	end
+
 	private
 	API_URL = 'http://api.7digital.com/1.2'
 end
