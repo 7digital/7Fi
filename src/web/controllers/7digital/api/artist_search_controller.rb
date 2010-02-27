@@ -13,7 +13,7 @@ get '/7digital/search/artists' do
 		content_type :html
 		response["Status"] = "400"
 	else
-		results = SearchResultAdapter.new.to_artists(SevenDigital.new.search(params[:q]))
+		results = TrackSearchResultAdapter.new.to_artists(SevenDigital.new.search(params[:q]))
 
 		{
 			'status' => 'OK',

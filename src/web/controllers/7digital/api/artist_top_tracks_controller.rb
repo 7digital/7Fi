@@ -13,7 +13,7 @@ get '/7digital/artist/toptracks' do
 		content_type :html
 		response["Status"] = "400"
 	else
-		results = SearchResultAdapter.new.to_tracks(SevenDigital.new.artist_top_tracks(params[:artistid]))
+		results = TrackSearchResultAdapter.new.to_tracks(SevenDigital.new.artist_top_tracks(params[:artistid]))
 		{
 			'status' => 'OK',
 			'results' => (results)

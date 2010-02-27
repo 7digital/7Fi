@@ -1,7 +1,7 @@
 require "nokogiri"
-require File.dirname(__FILE__) + '/../../../../src/seven_digital/xml/search_result_adapter'
+require File.dirname(__FILE__) + '/../../../../src/seven_digital/xml/artist_search_result_adapter'
 
-describe "Adapting from XML" do
+describe "Adapting artist search result XML" do
 	xml = nil
 	
 	before(:all) do
@@ -9,7 +9,7 @@ describe "Adapting from XML" do
 	end
 	
 	it "should provide the number of results" do
-		adapter = SearchResultAdapter.new
+		adapter = ArtistSearchResultAdapter.new
 
 		result = adapter.to_artists(xml)
 
@@ -17,7 +17,7 @@ describe "Adapting from XML" do
 	end
 
 	it "should return Chubby Checker with correct image and id" do
-		adapter = SearchResultAdapter.new
+		adapter = ArtistSearchResultAdapter.new
 
 		result = adapter.to_artists(xml)
 
