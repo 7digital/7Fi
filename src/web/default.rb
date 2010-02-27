@@ -15,7 +15,8 @@ class Default
 	set :views          => File.dirname(__FILE__) + '/views',
 	    :dump_errors    => true,
 		:raise_errors   => true,
-		:port           => 82
+		:port           => 82,
+		:public         => 'views/public'
 
 	get '/default.html' do
 		model = HomeModel.new("7Fi -- Home", 'ben.biddington')
