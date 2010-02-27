@@ -17,17 +17,21 @@ class SevenDigital
 	end
 
 	def search(for_what)
-		signed = @consumer.sign(URI.new("#{API_URL}/artist/search?pageSize=50&q=#{for_what}"))
+		signed = @consumer.sign(URI.new("#{API_URL}/artist/search?pageSize=50&q=#{uri_encode(for_what)}"))
 
 		TheInternet.new.get(signed)
 	end
 
 	def artist_top_tracks(artist_id)
-		signed = @consumer.sign(URI.new("#{API_URL}/artist/toptracks?artistid=#{artist_id}"))
+		signed = @consumer.sign(URI.new("#{API_URL}/artist/toptracks?artistid=#{uri_encode(artist_id)}"))
 
 		TheInternet.new.get(signed)
 	end
 
 	private
 	API_URL = 'http://api.7digital.com/1.2'
+
+	def uri_encode(what)
+		org.coriander.oauth.core.uri.OAuthUrlEncoder.new.encode(what) 		
+	end
 end

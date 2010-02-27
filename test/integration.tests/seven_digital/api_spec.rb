@@ -14,3 +14,9 @@ describe "Assuming I have valid API key, then api" do
 		search_result.should include("Chubby Jackson")
 	end
 end
+
+describe "The API" do
+	it "Should allow me to search for artists having two names" do
+		
+	end
+end
