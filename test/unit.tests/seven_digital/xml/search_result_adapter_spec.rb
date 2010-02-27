@@ -1,11 +1,11 @@
-require "spec"
+require "nokogiri"
 require File.dirname(__FILE__) + '/../../../../src/seven_digital/xml/search_result_adapter'
 
 describe "Adapting from XML" do
 	xml = nil
 	
 	before(:all) do
-		xml = read_all(File.dirname(__FILE__)+ '/../../res/artist-search.xml')
+		xml = File.read(File.dirname(__FILE__) + '/../../../res/artist-search.xml')
 	end
 	
 	it "should provide the number of results" do
@@ -25,15 +25,4 @@ describe "Adapting from XML" do
 		result.results[1].name.should match("Chubby Checker")
 		result.results[1].picture_url.should match("http://cdn.7static.com/static/img/artistimages/00/000/412/0000041217_150.jpg")
 	end
-end
-
-def read_all(file_name)
-	data = ''
-	f = File.open(file_name, "r")
-
-	f.each_line do |line|
-		data += line
-	end
-
-	return data
 end
