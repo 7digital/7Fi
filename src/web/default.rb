@@ -3,12 +3,8 @@ require 'haml'
 require 'sinatra'
 require 'sinatra/base'
 require 'activesupport'
-require 'jotify'
 require 'json'
-require File.dirname(__FILE__) + '/../../src/seven_digital/api'
-require File.dirname(__FILE__) + '/../../src/seven_digital/xml/track_search_result_adapter'
 require File.dirname(__FILE__) + '/models/home_model'
-require File.dirname(__FILE__) + '/controllers/7digital/api/artist_search_controller'
 
 # TODO: Consider this example: http://github.com/ben-biddington/spotify-api/blob/master/lib/jotify/api.rb
 class Default

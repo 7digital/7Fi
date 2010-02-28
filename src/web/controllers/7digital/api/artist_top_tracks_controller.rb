@@ -1,8 +1,9 @@
-require 'rubygems'
 require 'haml'
 require 'sinatra'
 require 'sinatra/base'
 require 'activesupport'
+require File.dirname(__FILE__) + '/../../../../../src/seven_digital/api'
+require File.dirname(__FILE__) + '/../../../../../src/seven_digital/xml/track_search_result_adapter'
 
 get '/7digital/artist/toptracks' do
 	response["Cache-Control"] = "max-age=3600, public"

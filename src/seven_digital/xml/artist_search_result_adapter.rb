@@ -1,4 +1,4 @@
-require 'nokogiri'
+require 'hpricot'
 require File.expand_path(File.dirname(__FILE__) + '/../../../src/seven_digital/search/artist')
 require File.expand_path(File.dirname(__FILE__) + '/../../../src/seven_digital/search/track')
 require File.expand_path(File.dirname(__FILE__) + '/../../../src/seven_digital/search/search_results')
@@ -6,8 +6,8 @@ require File.expand_path(File.dirname(__FILE__) + '/../../../src/seven_digital/s
 class ArtistSearchResultAdapter
 	def to_artists(xml)
 		artists = []
-
-		Nokogiri::XML(xml).css("response searchResults searchResult").each do |artist_node|
+		
+		Hpricot(xml).search("//response/searchResults/searchResult").each do |artist_node|
 			artists << to_artist(artist_node)
 		end
 
