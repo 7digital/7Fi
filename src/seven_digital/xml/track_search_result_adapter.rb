@@ -20,7 +20,7 @@ class TrackSearchResultAdapter
 		Track.new(
 			track_node[:id],
 			track_node.at('title').inner_html,
-			'http://www.url.com'
+			''
 		)
 	end
 end

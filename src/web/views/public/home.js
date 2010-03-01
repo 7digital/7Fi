@@ -1,35 +1,12 @@
-var playlists, seven_digital, status_message;
+var seven_digital, status_message, playlist;
 
 document.observe('dom:loaded', function() {
-	playlists       = $('playlists');
 	seven_digital   = $('seven_digital');
 	status_message  = $('status_message');
+	playlist = $('playlist');
 
-	playlists.update("Playlists'll go here");
 	seven_digital.update("And 7digital guff'll go here");
-
-	//loadPlaylists();
 });
-
-function loadPlaylists() {
-	var url = "/playlists.json";
-
-	showStatus('Loading playlists...');
-
-	var req = new Ajax.Request(url, {
-		method      : 'get',
-		contentType : 'application/json',
-		onSuccess   : function(result) {
-			showStatus('done <' + result.status + '>, binding...');
-			showStatus(result.responseJSON);
-		},
-		onFailure   : function(result) { }
-	});
-}
-
-function bindPlaylists(playlists) {
-	showStatus(null == playlists);
-}
 
 function search() {
 	var query = $('q').value;
@@ -65,9 +42,7 @@ function showSearchResults(results) {
 	if ($("container") != null) {
 		$("container").remove();
 	}
-
-	//seven_digital.update(results.responseJSON.results);
-
+    
 	var r = results.responseJSON.results.results;
 
 	$(seven_digital).insert(new Element("div", {id : "container"}));
@@ -101,11 +76,26 @@ function get_tracks_for(artist_id) {
 
 function track_to_list(tracks) {
 	var list = Builder.node('ul');
-	for (var i=0; i<tracks.length; i++) {
+	for (var i = 0; i < tracks.length; i++) {
 		list.insert(Builder.node(
 			'li',
-			[Builder.node('a', {href : tracks[i].stream_url}, tracks[i].name)])
+			[Builder.node('a',
+                {
+                    href : "#",
+                    onclick : "add_to_playlist(" + tracks[i].id +  ",'" + tracks[i].name + "')"
+                },
+                    tracks[i].name)])
 		);
 	}
 	return list;
+}
+
+function add_to_playlist(id, name)
+{
+    var element = new Element("div", {id : "container" })
+
+    element.innerText = name;
+    
+    playlist.insert(element);
+    return false;
 }
