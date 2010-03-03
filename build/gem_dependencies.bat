@@ -6,3 +6,4 @@ jruby -S gem install sinatra
 jruby -S gem install haml
 jruby -S gem install activesupport
 jruby -S gem install json-jruby
+jruby -S gem install hpricot

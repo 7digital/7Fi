@@ -1,4 +1,3 @@
-require "nokogiri"
 require File.dirname(__FILE__) + '/../../../../src/seven_digital/xml/artist_search_result_adapter'
 
 describe "Adapting artist search result XML" do
