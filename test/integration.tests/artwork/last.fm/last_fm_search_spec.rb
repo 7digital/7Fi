@@ -12,6 +12,9 @@ describe "Searching Last.fm for artist photos" do
 	
 	it "should return a list of photos as text" do
 		when_searching_for('Chubby Jackson')
+
+		puts @result
+
 		@result.should include('<images artist="Chubby Jackson"')
 	end
 

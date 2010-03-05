@@ -14,8 +14,6 @@ class LastFmSearch
 			"#{API_URL}?method=artist.getimages&artist&api_key=#{@flickr_api_key}&" +
 			"artist=#{uri_encode(artist_name)}&"+
 			"api_key=#{@api_key}"
-
-		puts the_url
 		  
 		TheInternet.new.get(URI.new(the_url))
 	end
