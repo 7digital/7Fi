@@ -1,6 +1,6 @@
 require "spec"
 
-require '../../../../../src/seven_digital/artwork/last.fm/artist_photograph_adapter'
+require File.dirname(__FILE__) + '/../../../../../src/seven_digital/artwork/last.fm/artist_photograph_adapter'
 
 describe "Adapting valid search xml" do
 	@xml 	= nil
