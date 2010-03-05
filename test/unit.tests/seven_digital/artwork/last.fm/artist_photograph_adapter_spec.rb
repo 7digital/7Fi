@@ -11,12 +11,12 @@ describe "Adapting valid search xml" do
 		@results = nil
 	end
 
-	it "should produce one result" do
+	it "should produce a result with url and size" do
 		given_some_valid_xml
 
 		when_it_is_adapted
 
-		@results.length.should be 1
+		@results.length.should be 2
 
 		@results[0].size.should be_a Size
 

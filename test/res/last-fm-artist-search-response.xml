@@ -27,5 +27,31 @@
 				<thumbsdown>0</thumbsdown>
 			</votes>
 		</image>
+		<image>
+			<title>chubby-jackson</title>
+			<url>http://www.last.fm/music/Chubby+Jackson/+images/4149031</url>
+			<dateadded>Thu, 31 Jan 2008 08:07:05</dateadded>
+			<format>jpg</format>
+			<owner type="user">
+				<name>zrsullivan</name>
+				<url>http://www.last.fm/user/zrsullivan</url>
+			</owner>
+			<sizes>
+				<size name="original" width="167" height="244">
+					http://userserve-ak.last.fm/serve/_/4149031/Chubby+Jackson+chubbyjackson.jpg
+				</size>
+				<size name="large" width="126" height="184">http://userserve-ak.last.fm/serve/126/4149031.jpg</size>
+				<size name="largesquare" width="126" height="126">http://userserve-ak.last.fm/serve/126s/4149031.jpg
+				</size>
+				<size name="medium" width="64" height="94">http://userserve-ak.last.fm/serve/64/4149031.jpg</size>
+				<size name="small" width="34" height="50">http://userserve-ak.last.fm/serve/34/4149031.jpg</size>
+				<size name="extralarge" width="252" height="368">http://userserve-ak.last.fm/serve/252/4149031.jpg
+				</size>
+			</sizes>
+			<votes>
+				<thumbsup>0</thumbsup>
+				<thumbsdown>0</thumbsdown>
+			</votes>
+		</image>
 	</images>
 </lfm>
