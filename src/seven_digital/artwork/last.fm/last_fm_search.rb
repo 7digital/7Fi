@@ -1,5 +1,5 @@
 require 'cgi'
-require File.dirname(__FILE__) + '/../../../src/seven_digital/net/the_internet'
+require File.dirname(__FILE__) + '/../../../../src/seven_digital/net/the_internet'
 
 class LastFmSearch
 	import 'java.net.URI'

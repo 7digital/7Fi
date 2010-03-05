@@ -1,5 +1,5 @@
 require "spec"
-require File.dirname(__FILE__) + '/../../../src/seven_digital/artwork/last_fm_search'
+require File.dirname(__FILE__) + '/../../../../src/seven_digital/artwork/last.fm/last_fm_search'
 
 describe "Searching Last.fm for photos" do
 	@result = nil
