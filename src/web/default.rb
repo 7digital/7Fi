@@ -20,6 +20,11 @@ class Default
 		haml :home, :locals => { :model => model }
 	end
 
+	get '/home.css' do
+  		header 'Content-Type' => 'text/css; charset=utf-8'
+ 		sass :home
+	end
+
 	load File.dirname(__FILE__) + '/controllers/7digital/api/artist_search_controller.rb'
 	load File.dirname(__FILE__) + '/controllers/7digital/api/artist_top_tracks_controller.rb'
 end
