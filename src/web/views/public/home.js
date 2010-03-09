@@ -24,8 +24,9 @@ function search() {
 }
 
 function showSearchResults(results) {
-	var container = $('<div>');
+	var container = $('<div>', { class : 'search-result-container'});
 
+	seven_digital.find('div.search-result-container').remove();
 	seven_digital.append(container);
 
 	for (var i = 0; i <= results.count; i++) {
