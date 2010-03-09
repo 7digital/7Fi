@@ -15,6 +15,7 @@ get '/7digital/search/artists' do
 		response["Status"] = "400"
 	else
 		results = ArtistSearchResultAdapter.new.to_artists(SevenDigital.new.search(params[:q]))
+
 		{
 			'status' => 'OK',
 			'results' => results

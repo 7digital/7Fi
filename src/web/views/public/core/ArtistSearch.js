@@ -1,15 +1,8 @@
 function ArtistSearch() {
-    this.contentType = 'application/json';
-
     this.go = function(query, onSuccess) {
         var url = formatUrl(query);
         
-        new Ajax.Request(url, {
-		    method      : 'get',
-		    contentType : this.contentType,
-		    onSuccess   : onSuccess,
-		    onFailure   : function(result) {}
-	    });  
+        $.getJSON(url, onSuccess);  
     }
 
     function formatUrl(query) {

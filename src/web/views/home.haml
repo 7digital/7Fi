@@ -4,14 +4,7 @@
 		%link{:rel => "stylesheet", :type => 'text/css', :href => '/home.css' }
 		%script{:language => "javascript", :type => "text/javascript", :src => "http://yui.yahooapis.com/2.8.0r4/build/yahoo/yahoo-min.js"}
 		%script{:language => "javascript", :type => "text/javascript", :src => "http://yui.yahooapis.com/2.8.0r4/build/event/event-min.js"}
-		%script{:language => "javascript", :type => "text/javascript", :src => "lib/scriptaculous-js-1.8.3/lib/prototype.js"}
-		%script{:language => "javascript", :type => "text/javascript", :src => "lib/scriptaculous-js-1.8.3/src/builder.js"}
-		%script{:language => "javascript", :type => "text/javascript", :src => "lib/scriptaculous-js-1.8.3/src/effects.js"}
-		%script{:language => "javascript", :type => "text/javascript", :src => "lib/scriptaculous-js-1.8.3/src/controls.js"}
-		%script{:language => "javascript", :type => "text/javascript", :src => "lib/scriptaculous-js-1.8.3/src/dragdrop.js"}
-		%script{:language => "javascript", :type => "text/javascript", :src => "lib/scriptaculous-js-1.8.3/src/scriptaculous.js"}
-		%script{:language => "javascript", :type => "text/javascript", :src => "lib/scriptaculous-js-1.8.3/src/slider.js"}
-		%script{:language => "javascript", :type => "text/javascript", :src => "scriptaculous-js-1.8.3/src/sound.js"}
+		%script{:language => "javascript", :type => "text/javascript", :src => "lib/jquery/jquery-1.4.2.min.js"}
 		%script{:language => "javascript", :type => "text/javascript", :src => "/home.js"}
 		%script{:language => "javascript", :type => "text/javascript", :src => "/core/ArtistSearch.js"}
 		%script{:language => "javascript", :type => "text/javascript", :src => "/core/TopTracks.js"}
@@ -21,6 +14,6 @@
 		%input{:type => "textbox", :value => "Chubby Jackson", :id => 'q'}
 		%input{:type => "button", :onclick => "search(); return false;", :value => 'Go' }
 		%div.seven_digital{:id => "playlist"}   
-		%div.seven_digital{:id => "seven_digital_out"}
 		%div.seven_digital{:id => "seven_digital"}
+			text
 		%div{:id => "status_message"}
