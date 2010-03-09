@@ -1,11 +1,21 @@
-function TrackList(tracks) {
-    this.tracks = tracks;
-    
-    this.toList = function() {
+function TrackList(trackListModel, elem) {
+    this.trackListModel = trackListModel;
+    this.elem			= elem;
+
+	this.trackListModel.onTrackLoad.subscribe(onModelLoad, this);
+
+	function onModelLoad(type, args, me) {
+		var list = toList();
+		elem.insert(list);
+	}
+
+    function toList () {
         var list = Builder.node('ul');
 
+		var tracks = trackListModel.getTracks();
+
         for (var i = 0; i < tracks.length; i++) {
-            list.insert(toListItem(this.tracks[i]));
+            list.insert(toListItem(tracks[i]));
         }
 
 	    return list;

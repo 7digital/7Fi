@@ -36,21 +36,19 @@ function showSearchResults(results) {
 		var artist = Builder.node('h1', r[i].name, [Builder.node("img", { src : r[i].picture_url})]);
 		var artist_list = Builder.node('div', {id : "artist_" + r[i].id}, artist);
 		$("container").insert(artist_list);
-		showTracksFor(r[i].id);
+		showTopTracksFor(r[i].id);
 	}
 }
 
-function showTracksFor(artistId) {
+function showTopTracksFor(artistId) {
 	new TopTracks().go(artistId, function(result) {
-	    $("artist_" + artistId).insert(
-		    toTrackList(result.responseJSON.results.results)
-		);
-	});
-}
+		var targetElement = $("artist_" + artistId);
 
-function toTrackList(tracks) {
-    return new TrackList(tracks).toList();
-    // TODO: Add click handler like: onclick : "addToPlaylist(" + tracks[i].id +  ",'" + tracks[i].name + "')"
+		var model = new TrackListModel();
+		var widget = new TrackList(model, targetElement);
+
+		model.load(result.responseJSON.results.results);
+	});
 }
 
 function addToPlaylist(id, name) {
