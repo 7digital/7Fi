@@ -33,16 +33,23 @@ function showSearchResults(results) {
 		var result = results.results[i];
 		
 		var artistDiv 	= $('<div>', { style : 'vertical-align:top;margin:2px; padding:1px; border:1px solid #F0F0F0;'});
-		var artistImage = $('<img>', { src : result.picture_url});
-		var artistName	= $('<div>', { text : result.name , style: 'padding:2px' });
 
-		artistDiv.append(artistName);
-		// artistDiv.append(artistImage);
+		if (result) {
+			var artistName	= $('<div>', { text : result.name, style: 'padding:2px' });
+
+			artistDiv.append(artistName);
+		}
 
 		container.append(artistDiv);
 	}
 
 	showStatus('');
+	
+	//var model = new TrackListModel();
+
+	//model.onTrackLoad.subscribe(function(a, b, c) { showStatus(a)}, this);
+	
+	//model.load(results.results);
 }
 
 function showTopTracksFor(artistId) {

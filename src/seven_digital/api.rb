@@ -17,7 +17,7 @@ class SevenDigital
 	end
 
 	def search(for_what)
-		uri = URI.new("#{API_URL}/artist/search?app=7fi&pageSize=5&q=#{uri_encode(for_what)}")
+		uri = URI.new("#{API_URL}/artist/search?app=7fi&pageSize=50&q=#{uri_encode(for_what)}")
 
 		get sign uri
 	end
