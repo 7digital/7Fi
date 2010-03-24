@@ -5,3 +5,4 @@
 
 # Add initial buildfile information here
 config :all, :required => :sproutcore
+proxy "/7digital/search/artists", :to => "localhost:82"

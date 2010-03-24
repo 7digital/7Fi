@@ -10,11 +10,9 @@ SevenFi.tasksController = SC.ArrayController.create(
     	return ret;
   	}.property('length').cacheable(),
 
-	onDoSommit : function() {
-		console.log("Clicked with " + arguments.length + " args.");
+	search : function() {
+		var theQuery = SevenFi.getPath('mainPage.mainPane.topView.searchTextBox').get('value');
 
-		for (var i = 0; i < arguments.length; i++) {
-			console.log("arg " + i + " = '" + arguments[i] + "'" );
-		}
+		console.log("Searching for <" + theQuery + ">");
 	}
-}) ;
+});

@@ -4,20 +4,27 @@
 
 		topView: SC.ToolbarView.design({
 			layout: { top: 0, left: 0, right: 0, height: 36 },
-			childViews: 'labelView addButton'.w(),
+			childViews: 'searchButton searchTextBox labelView'.w(),
 			anchorLocation: SC.ANCHOR_TOP,
 
 			labelView: SC.LabelView.design({
-				layout: { centerY: 0, height: 24, left: 8, width: 200 },
+				layout: { centerY: 0, height: 24, right: 8, width: 50 },
 				controlSize: SC.LARGE_CONTROL_SIZE,
 				fontWeight: SC.BOLD_WEIGHT,
 				value:   '7Fi'
 			}),
 
-			addButton: SC.ButtonView.design({
-				layout: { centerY: 0, height: 24, right: 12, width: 100 },
-				title:  "Do sommit",
-				action : 'SevenFi.tasksController.onDoSommit'
+			searchButton: SC.ButtonView.design({
+				layout: { centerY: 0, height: 24, left: 8, width: 100 },
+				title:  "Search",
+				action : 'SevenFi.tasksController.search'
+			}),
+
+			searchTextBox: SC.TextFieldView.design({
+				layout: { centerY: 0, height: 24, left: 120, width: 200 },
+				controlSize: SC.LARGE_CONTROL_SIZE,
+				fontWeight: SC.BOLD_WEIGHT,
+				hint : "Type in here to search"
 			})
 		}),
 
@@ -29,8 +36,7 @@
 			contentView: SC.ListView.design({
 				contentBinding		: 'SevenFi.tasksController.arrangedObjects',
   				selectionBinding	: 'SevenFi.tasksController.selection',
-				contentValueKey		: 'description',
-  				contentCheckboxKey	: 'isDone',
+				contentValueKey		: 'name',
   				rowHeight			: 21
 			})
 		}),
