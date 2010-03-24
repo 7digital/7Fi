@@ -8,7 +8,12 @@ SevenFi.SearchDataSource = SC.DataSource.extend(
 /** @scope SevenFi.SearchDataSource.prototype */ {
 
 	fetch: function(store, query) {
-		console.debug("QUERY: <" + query.conditions + ">");
+		console.debug(
+			"QUERY: <conditions:" + query.conditions + ", " +
+			"parameters:" + query.parameters + ", " +
+			"props:" + query.concatenatedProperties + "," +
+			">"
+		);
 
 		if (query === SevenFi.ARTIST_SEARCH_QUERY) {
 			SC.Request.getUrl('/7digital/search/artists?q=chubby+jackson').
