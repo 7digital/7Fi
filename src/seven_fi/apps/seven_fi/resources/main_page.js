@@ -25,7 +25,13 @@
 			layout: { top: 36, bottom: 32, left: 0, right: 0 },
 			backgroundColor: '#f0f0f0',
 
-			contentView: SC.ListView.design({})
+			contentView: SC.ListView.design({
+				contentBinding		: 'SevenFi.tasksController.arrangedObjects',
+  				selectionBinding	: 'SevenFi.tasksController.selection',
+				contentValueKey		: 'description',
+  				contentCheckboxKey	: 'isDone',
+  				rowHeight			: 21
+			})
 		}),
 
 		bottomView: SC.ToolbarView.design({
@@ -34,10 +40,9 @@
 			anchorLocation: SC.ANCHOR_BOTTOM,
 
 			summaryView: SC.LabelView.design({
-				layout: { centerY: 0, height: 18, left: 20, right: 20 },
-				textAlign: SC.ALIGN_CENTER,
-
-				value: "Playlist"
+				layout		: { centerY: 0, height: 18, left: 20, right: 20 },
+				textAlign	: SC.ALIGN_CENTER,
+				valueBinding: "SevenFi.tasksController.summary"
 			})
 		})
 	})

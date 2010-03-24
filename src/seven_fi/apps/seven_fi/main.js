@@ -1,12 +1,8 @@
 SevenFi.main = function main() {
-  SevenFi.getPath('mainPage.mainPane').append() ;
+  	SevenFi.getPath('mainPage.mainPane').append() ;
 
-  // Step 2. Set the content property on your primary controller.
-  // This will make your app come alive!
-
-  // TODO: Set the content property on your primary controller
-  // ex: SevenFi.contactsController.set('content',SevenFi.contacts);
-
+  	var tasks = SevenFi.store.find(SevenFi.Task);
+	SevenFi.tasksController.set('content', tasks);
 } ;
 
 function main() { SevenFi.main(); }
