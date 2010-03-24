@@ -8,5 +8,13 @@ SevenFi.tasksController = SC.ArrayController.create(
     	} else ret = "No tasks";
 
     	return ret;
-  	}.property('length').cacheable()  
+  	}.property('length').cacheable(),
+
+	onDoSommit : function() {
+		console.log("Clicked with " + arguments.length + " args.");
+
+		for (var i = 0; i < arguments.length; i++) {
+			console.log("arg " + i + " = '" + arguments[i] + "'" );
+		}
+	}
 }) ;

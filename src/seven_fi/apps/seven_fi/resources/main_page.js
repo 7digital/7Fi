@@ -16,7 +16,8 @@
 
 			addButton: SC.ButtonView.design({
 				layout: { centerY: 0, height: 24, right: 12, width: 100 },
-				title:  "Do sommit"
+				title:  "Do sommit",
+				action : 'SevenFi.tasksController.onDoSommit'
 			})
 		}),
 
