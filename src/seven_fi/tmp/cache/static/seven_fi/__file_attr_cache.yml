@@ -1,0 +1,33 @@
+--- 
+C:/Documents/Sauce/7Fi/src/seven_fi/apps/seven_fi/core.js: 
+  scan_source: 
+    mtime: 1269421316
+    value: []
+
+C:/Documents/Sauce/7Fi/src/seven_fi/apps/seven_fi/resources/main_page.js: 
+  scan_source: 
+    mtime: 1269422791
+    value: []
+
+C:/Documents/Sauce/7Fi/src/seven_fi/apps/seven_fi/models/task.js: 
+  scan_source: 
+    mtime: 1269421798
+    value: []
+
+C:/Documents/Sauce/7Fi/src/seven_fi/apps/seven_fi/fixtures/task.js: 
+  scan_source: 
+    mtime: 1269421774
+    value: 
+    - - sc_require
+      - "'"
+      - models/task
+C:/Documents/Sauce/7Fi/src/seven_fi/apps/seven_fi/resources/loading.rhtml: 
+  scan_source: 
+    mtime: 1269421316
+    value: []
+
+C:/Documents/Sauce/7Fi/src/seven_fi/apps/seven_fi/main.js: 
+  scan_source: 
+    mtime: 1269421917
+    value: []
+
