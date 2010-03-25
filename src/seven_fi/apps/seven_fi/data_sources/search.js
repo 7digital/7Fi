@@ -1,4 +1,5 @@
 sc_require('models/task');
+
 SevenFi.ARTIST_SEARCH_QUERY = SC.Query.local(
 	SevenFi.Artist,
 	{ orderBy: 'name'}
@@ -8,55 +9,64 @@ SevenFi.SearchDataSource = SC.DataSource.extend(
 /** @scope SevenFi.SearchDataSource.prototype */ {
 
 	fetch: function(store, query) {
-		console.debug(
-			"QUERY: <conditions:" + query.conditions + ", " +
-			"parameters:" + query.parameters + ", " +
-			"props:" + query.concatenatedProperties + "," +
-			">"
-		);
-
-		if (query === SevenFi.ARTIST_SEARCH_QUERY) {
-			SC.Request.getUrl('/7digital/search/artists?q=chubby+jackson').
-				json().
-				notify(this, 'didFetchTasks', store, query).
-				send();
+		if (query.parameters != null) {
+			var theUrl = this._formatUrl(query);
 			
-			  return YES;
+			SC.Request.getUrl(theUrl).
+				json().
+				notify(this, '_fill', store, query).
+				send();
+
+			return YES;
 		}
 
-  		return NO;
-  	},
+		return NO;
+	},
   
-  retrieveRecord: function(store, storeKey) {
-    
-    // TODO: Add handlers to retrieve an individual record's contents
-    // call store.dataSourceDidComplete(storeKey) when done.
-    
-    return NO ; // return YES if you handled the storeKey
-  },
+	retrieveRecord: function(store, storeKey) {
+		return NO;
+	},
   
-  createRecord: function(store, storeKey) {
-    
-    // TODO: Add handlers to submit new records to the data source.
-    // call store.dataSourceDidComplete(storeKey) when done.
-    
-    return NO ; // return YES if you handled the storeKey
-  },
-  
-  updateRecord: function(store, storeKey) {
-    
-    // TODO: Add handlers to submit modified record to the data source
-    // call store.dataSourceDidComplete(storeKey) when done.
+	createRecord: function(store, storeKey) {
+		return NO;
+	},
 
-    return NO ; // return YES if you handled the storeKey
-  },
-  
-  destroyRecord: function(store, storeKey) {
-    
-    // TODO: Add handlers to destroy records on the data source.
-    // call store.dataSourceDidDestroy(storeKey) when done
-    
-    return NO ; // return YES if you handled the storeKey
-  }
-  
-}) ;
+	updateRecord: function(store, storeKey) {
+		return NO;
+	},
+
+	destroyRecord: function(store, storeKey) {
+		return NO;
+	},
+
+	_formatUrl : function(query) {
+		 return "/7digital/search/artists?q=%@1".fmt(query.parameters.name);
+	},
+
+	_fill : function(response, store, query) {
+		if (SC.ok(response)) {
+			this._log("Loading store...");
+			
+			// @see: http://wiki.sproutcore.com/DataStore-DataSource+Fetching+Data
+			try {
+				var storeKeys = store.loadRecords(
+					SevenFi.Artist,
+					response.getPath('body').results.results
+				);
+
+				// @see: http://docs.sproutcore.net/symbols/SC.Store.html#SC.Store#loadQueryResults
+				// this ONLY applies when {query} argument is remote
+				//store.loadQueryResults(query, storeKeys);
+			} catch (e) {
+				this._log("ERROR %@1".fmt(e.toString()));
+			}
+
+		} else {
+			this._log("ERROR");
+		}
+	},
+	
+	_log : function(what) {
+		console.debug("[SevenFi.SearchDataSource] %@1".fmt(what));
+	}
+});

@@ -24,7 +24,8 @@
 				layout: { centerY: 0, height: 24, left: 120, width: 200 },
 				controlSize: SC.LARGE_CONTROL_SIZE,
 				fontWeight: SC.BOLD_WEIGHT,
-				hint : "Type in here to search"
+				hint : "Type in here to search",
+				value : 'chubby'
 			})
 		}),
 
