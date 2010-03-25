@@ -39,16 +39,20 @@ test("There is one store for the application, and it exposes different data type
 	
 	var allTasks = store.find(SC.Query.local(SevenFi.Task));
 
-	equals(allTasks.length(), 2, "Correct total number of tasks returned");
+	equals(allTasks.length(), 3, "Correct total number of tasks returned");
 
 	// @see: http://wiki.sproutcore.com/DataStore-SCQL
 	var tasks = store.find(SC.Query.local(
 		SevenFi.Task,
 		"isDone = {isDone}",
-		{ isDone : YES }
+		{ isDone : NO }
 	));
 
 	equals(tasks.length(), 1, "Correct number of unfinished tasks returned");
+	equals(
+		tasks.objectAt(0).get('description'), 'Kill Austin Powers',
+		"Correct unfinished task returned"
+	);
 });
 
 var newFakeStore = function() {
@@ -80,7 +84,8 @@ var someTaskJson = function() {
 	return JSON.parse(
 		'{"status":"OK","results":{"results":[' +
 		'	{"guid": "item-0", "isDone":false	, "description":"Kill Austin Powers"},' +
-		'	{"guid": "item-1", "isDone":true	, "description":"Take out the garbage"}' +
+		'	{"guid": "item-1", "isDone":true	, "description":"Take out the garbage"},' +
+		'	{"guid": "item-2", "isDone":true	, "description":"Get Otto out"}' +
 		']}}'
 	);
 };
