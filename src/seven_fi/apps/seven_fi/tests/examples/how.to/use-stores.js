@@ -1,5 +1,5 @@
 // Run this fixture by browsing to:
-// http://localhost:4020/seven_fi/en/current/tests/controllers/how.to.html
+// http://localhost:4020/seven_fi/en/current/tests/examples/how.to/use-stores.html
 
 sc_require('models/task');
 module("SevenFi.SearchDataSource.Examples");
