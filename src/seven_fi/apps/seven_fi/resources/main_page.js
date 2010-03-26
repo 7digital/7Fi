@@ -44,13 +44,20 @@
 
 		bottomView: SC.ToolbarView.design({
 			layout: { bottom: 0, left: 0, right: 0, height: 32 },
-			childViews: 'summaryView'.w(),
+			childViews: 'summaryView logView'.w(),
 			anchorLocation: SC.ANCHOR_BOTTOM,
 
 			summaryView: SC.LabelView.design({
-				layout		: { centerY: 0, height: 18, left: 20, right: 20 },
-				textAlign	: SC.ALIGN_CENTER,
+				layout		: { centerY: 0, height: 18, left: 8 },
+				textAlign	: SC.ALIGN_LEFT,
 				valueBinding: "SevenFi.tasksController.summary"
+			}),
+
+			logView : SC.LabelView.design({
+				contentBinding	: 'SevenFi.logController.arrangedObjects',
+				layout			: { centerY: 0, height: 18, right: 8 },
+				textAlign		: SC.ALIGN_RIGHT,
+				valueBinding	: "SevenFi.tasksController.log"
 			})
 		})
 	})
