@@ -55,6 +55,33 @@ test("There is one store for the application, and it exposes different data type
 	);
 });
 
+test("How to add new items to a store, for example a log store", function() {
+	var logStore = SC.Store.create({
+		commitRecordsAutomatically : NO
+	});
+
+	logStore.createRecord(SevenFi.LogEntry, {
+		guid : '1',
+		message : 'This is a test log message',
+		timestamp : new SC.DateTime()
+	});
+
+	var results = logStore.find(SC.Query.local(SevenFi.LogEntry));
+
+	equals(results.length(), 1, "Correct number of log entries returned");
+
+	var entries = logStore.find(SC.Query.local(
+		SevenFi.LogEntry,
+		"guid = {guid}",
+		{ guid : '1' }
+	));
+
+	equals(
+		entries.objectAt(0).get('message'), 'This is a test log message',
+		"Able to find the log entry just added"
+	);
+});
+
 var newFakeStore = function() {
 	var artistStore = SC.Store.create({});
 
