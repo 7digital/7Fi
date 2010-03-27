@@ -17,7 +17,7 @@ test("How to observe a property on another object using a closure", function() {
 	var okay = false;
 	var msg = null;
 	
-	observable.addObserver('isDone', observable, function() {
+	observable.addObserver('isDone', this, function() {
 		msg = "Observer notified";
 		okay = YES;
 	});
