@@ -28,13 +28,13 @@ test("Should be able to observe a controller's content via a RangeObserver", fun
 	var okay = NO;
 	var msg;
 
-	var observer  = controller.addRangeObserver(
+	var observer = controller.addRangeObserver(
 		SC.IndexSet.create(0,10),
 		this,
-		function(array, objects, key, indexes, context) {
+		function(array, objects, key, indexSet, context) {
 			okay = YES;
 			msg = "Notified about changes to indexes [%@1] with key <%@2>".fmt(
-				indexes.get('length'),
+				indexSet.get('length'),
 				key
 			);
 		}
@@ -46,7 +46,7 @@ test("Should be able to observe a controller's content via a RangeObserver", fun
 
 	while(okay === NO) {}
 
-	ok(okay, msg);
+	ok(okay, msg + " (controller represents <%@1> items)".fmt(controller.get('length')));
 });
 
 var given_a_controller_with_an_array_as_its_content = function() {
