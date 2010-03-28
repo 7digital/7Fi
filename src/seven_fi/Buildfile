@@ -4,5 +4,5 @@
 # ===========================================================================
 
 # Add initial buildfile information here
-config :all, :required => :sproutcore
+config :all, :required => [:sproutcore, :"sproutcore/animation"]  
 proxy "/7digital/search/artists", :to => "localhost:82"
