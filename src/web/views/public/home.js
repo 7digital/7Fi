@@ -6,6 +6,9 @@ $(document).ready(function() {
 	playlist 		= $('#playlist');
 
 	seven_digital.text("And 7digital guff'll go here");
+    $('.media').media();
+  	$.fn.media.defaults.flvPlayer = 'lib/player.swf';
+  	$.fn.media.defaults.mp3Player = 'lib/player.swf';
 });
 
 function search() {

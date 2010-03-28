@@ -5,15 +5,23 @@
 		%script{:language => "javascript", :type => "text/javascript", :src => "http://yui.yahooapis.com/2.8.0r4/build/yahoo/yahoo-min.js"}
 		%script{:language => "javascript", :type => "text/javascript", :src => "http://yui.yahooapis.com/2.8.0r4/build/event/event-min.js"}
 		%script{:language => "javascript", :type => "text/javascript", :src => "lib/jquery/jquery-1.4.2.min.js"}
+		%script{:language => "javascript", :type => "text/javascript", :src => "lib/jquery/jquery.media.js"}
 		%script{:language => "javascript", :type => "text/javascript", :src => "/home.js"}
 		%script{:language => "javascript", :type => "text/javascript", :src => "/core/ArtistSearch.js"}
 		%script{:language => "javascript", :type => "text/javascript", :src => "/core/TopTracks.js"}
 		%script{:language => "javascript", :type => "text/javascript", :src => "/core/widgets/TrackList.js"}
 		%script{:language => "javascript", :type => "text/javascript", :src => "/core/model/TrackListModel.js"}
 	%body
-		%input{:type => "textbox", :value => "Chubby Jackson", :id => 'q'}
-		%input{:type => "button", :onclick => "search(); return false;", :value => 'Go' }
-		%div.seven_digital{:id => "playlist"}   
-		%div.seven_digital{:id => "seven_digital"}
-			text
-		%div{:id => "status_message"}
+		#left
+			%input{:type => "textbox", :value => "Chubby Jackson", :id => 'q'}
+			%input{:type => "button", :onclick => "search(); return false;", :value => 'Go' }
+			%div.seven_digital{:id => "playlist"}
+			%div.seven_digital{:id => "seven_digital"}
+				text
+			%div{:id => "status_message"}
+		#right
+			#media
+				%h2 Playlist
+				%ul
+					%li
+						%a{:class => 'media', :href => 'http://www.7digital.com'} Bob Dylan - Like A Rolling Stone
