@@ -12,9 +12,7 @@ SevenFi.tasksController = SC.ArrayController.create(
 			{ orderBy: 'name'}
 		);
 		
-		SevenFi.store = SC.Store.create({
-			commitRecordsAutomatically: NO
-		}).from('SevenFi.SearchDataSource');
+		this._clear();
 
 		SevenFi.store.find(query);
 
@@ -26,7 +24,7 @@ SevenFi.tasksController = SC.ArrayController.create(
 
     	if (len && len > 0) {
       		ret = len === 1 ? "1 result" : "%@ results".fmt(len);
-    	} else ret = "No tasks";
+    	} else ret = "No results";
 
     	return ret;
   	}.property('length').cacheable(),
@@ -37,5 +35,11 @@ SevenFi.tasksController = SC.ArrayController.create(
 
 	_findSearchTerm : function() {
 		return SevenFi.getPath('mainPage.mainPane.topView.searchTextBox').get('value');
+	},
+
+	_clear : function() {
+		SevenFi.store = SC.Store.create({
+			commitRecordsAutomatically: NO
+		}).from('SevenFi.SearchDataSource');	
 	}
 });
