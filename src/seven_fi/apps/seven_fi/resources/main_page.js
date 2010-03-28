@@ -39,7 +39,12 @@
 				contentBinding		: 'SevenFi.tasksController.arrangedObjects',
   				selectionBinding	: 'SevenFi.tasksController.selection',
 				contentValueKey		: 'name',
-  				rowHeight			: 21
+  				rowHeight			: 21,
+				showAlternatingRows	: YES,
+				selectOnMouseDown 	: YES,
+				actOnSelect 		: YES,
+				target				: 'SevenFi.tasksController',
+				action				: 'onSelected'
 			}),
 
 			logView : SC.ListView.design({

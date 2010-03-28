@@ -19,6 +19,12 @@ SevenFi.tasksController = SC.ArrayController.create(
 		SevenFi.tasksController.set('content', SevenFi.store.find(SevenFi.ARTIST_SEARCH_QUERY));
 	},
 
+	onSelected : function(listView) {
+		var selection = listView.get('selection');
+		
+		this._log("Item(s) selected: %@1".fmt(selection.get('length')));
+	},
+
 	summary : function() {
     	var len = this.get('length'), ret ;
 
