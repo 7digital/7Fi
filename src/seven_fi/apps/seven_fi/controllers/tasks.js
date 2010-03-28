@@ -3,7 +3,7 @@ SevenFi.tasksController = SC.ArrayController.create(
 	search : function() {
 		var theSearchTerm = this._findSearchTerm(); 
 
-		this._log("[SevenFi.tasksController] Searching for <%@1>".fmt(theSearchTerm));
+		this._log("Searching for <%@1>".fmt(theSearchTerm));
 
 		var query = SC.Query.local(
 			SevenFi.Artist,
@@ -11,6 +11,10 @@ SevenFi.tasksController = SC.ArrayController.create(
 			{ name : theSearchTerm},
 			{ orderBy: 'name'}
 		);
+		
+		SevenFi.store = SC.Store.create({
+			commitRecordsAutomatically: NO
+		}).from('SevenFi.SearchDataSource');
 
 		SevenFi.store.find(query);
 

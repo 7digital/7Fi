@@ -44,6 +44,7 @@
 
 			logView : SC.ListView.design({
 				contentBinding		: 'SevenFi.logController.arrangedObjects',
+				selectionBinding	: 'SevenFi.logController.selection',
 				contentValueKey		: 'message',
   				rowHeight			: 21
 			})
