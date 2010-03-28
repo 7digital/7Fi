@@ -6,6 +6,8 @@ SevenFi.logController = SC.ArrayController.create(
 			message 	: what,
 			timestamp 	: SC.DateTime.create()
 		});
+
+		console.log(what);
 	},
 
 	summary : function() {

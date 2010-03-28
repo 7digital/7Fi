@@ -70,7 +70,6 @@
 				layout		: { centerY: 0, height: 18, right: 8 },
 				textAlign	: SC.ALIGN_RIGHT,
 				valueBinding: "SevenFi.logController.summary",
-				value 		: "Starting",
 				borderStyle	: SC.BORDER_BEZEL
 			})
 		})
