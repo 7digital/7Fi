@@ -7,6 +7,8 @@ SevenFi.logController = SC.ArrayController.create(
 			timestamp 	: SC.DateTime.create()
 		});
 
+		SevenFi.log.flush();
+
 		console.log(what);
 	},
 

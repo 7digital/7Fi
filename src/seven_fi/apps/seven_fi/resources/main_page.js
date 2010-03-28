@@ -29,11 +29,15 @@
 			})
 		}),
 
-		middleView: SC.ScrollView.design({
+		middleView: SC.ScrollView.design(SC.Animatable, {
+			transitions: {
+				opacity	: { duration: .5, timing: SC.Animatable.TRANSITION_CSS_EASE_IN_OUT },
+				display	: .75
+  			},
 			hasHorizontalScroller: NO,
 			layout: { top: 36, bottom: 32, left: 0, right: 0 },
 			backgroundColor: '#f0f0f0',
-			childViews: 'contentView logView'.w(),
+			childViews: 'contentView'.w(),
 
 			contentView : SC.ListView.design({
 				contentBinding		: 'SevenFi.tasksController.arrangedObjects',
@@ -41,17 +45,9 @@
 				contentValueKey		: 'name',
   				rowHeight			: 21,
 				showAlternatingRows	: YES,
-				selectOnMouseDown 	: YES,
 				actOnSelect 		: YES,
 				target				: 'SevenFi.tasksController',
 				action				: 'onSelected'
-			}),
-
-			logView : SC.ListView.design({
-				contentBinding		: 'SevenFi.logController.arrangedObjects',
-				selectionBinding	: 'SevenFi.logController.selection',
-				contentValueKey		: 'message',
-  				rowHeight			: 21
 			})
 		}),
 
@@ -72,6 +68,13 @@
 				valueBinding: "SevenFi.logController.summary",
 				borderStyle	: SC.BORDER_BEZEL
 			})
+
+//			logView : SC.ListView.design({
+//				contentBinding		: 'SevenFi.logController.arrangedObjects',
+//				selectionBinding	: 'SevenFi.logController.selection',
+//				contentValueKey		: 'message',
+//				rowHeight			: 21
+//			})
 		})
 	})
 });
