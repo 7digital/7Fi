@@ -14,18 +14,16 @@ test("How to observe a property on another object using a closure", function() {
 		isDone : false
 	});
 
-	var okay = false;
 	var msg = null;
 	
 	observable.addObserver('isDone', this, function() {
 		msg = "Observer notified";
-		okay = YES;
+		start();
 	});
 
 	observable.set('isDone', YES);
 
-	// TODO: make this an async test, @see: http://docs.jquery.com/QUnit/asyncTest#nameexpectedtest
-	while (!okay) { }
+	stop();
 
 	ok(YES, msg);
 });

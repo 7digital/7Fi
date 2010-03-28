@@ -10,7 +10,7 @@ SevenFi = SC.Application.create(
 
 	// store: SC.Store.create().from(SC.Record.fixtures)
 
-	store: SC.Store.create({
+	store : SC.Store.create({
 		commitRecordsAutomatically: YES
 	}).from('SevenFi.SearchDataSource'),
 

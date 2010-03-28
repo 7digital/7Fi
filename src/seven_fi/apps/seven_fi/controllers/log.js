@@ -1,12 +1,24 @@
 SevenFi.logController = SC.ArrayController.create(
 /** @scope SevenFi.logController.prototype */ {
-
-	// Logs the supplied message
 	log : function(what) {
 		SevenFi.log.createRecord(SevenFi.LogEntry, {
-			guid 		: '1', //TODO: generate these
+			guid 		: this._nextId(),
 			message 	: what,
 			timestamp 	: SC.DateTime.create()
 		});
-	}
+	},
+
+	summary : function() {
+		var length = this.get('length');
+
+		return length > 0
+			? this.get('content').objectAt(length - 1).get('message')
+			: "";	
+	}.property('length').cacheable(),
+
+	_nextId : function() {
+		return (this._id++).toString();	
+	},
+
+	_id : 0
 });

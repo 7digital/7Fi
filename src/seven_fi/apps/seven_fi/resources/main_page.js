@@ -33,18 +33,25 @@
 			hasHorizontalScroller: NO,
 			layout: { top: 36, bottom: 32, left: 0, right: 0 },
 			backgroundColor: '#f0f0f0',
+			childViews: 'contentView logView'.w(),
 
-			contentView: SC.ListView.design({
+			contentView : SC.ListView.design({
 				contentBinding		: 'SevenFi.tasksController.arrangedObjects',
   				selectionBinding	: 'SevenFi.tasksController.selection',
 				contentValueKey		: 'name',
+  				rowHeight			: 21
+			}),
+
+			logView : SC.ListView.design({
+				contentBinding		: 'SevenFi.logController.arrangedObjects',
+				contentValueKey		: 'message',
   				rowHeight			: 21
 			})
 		}),
 
 		bottomView: SC.ToolbarView.design({
 			layout: { bottom: 0, left: 0, right: 0, height: 32 },
-			childViews: 'summaryView logView'.w(),
+			childViews: 'summaryView statusView'.w(),
 			anchorLocation: SC.ANCHOR_BOTTOM,
 
 			summaryView: SC.LabelView.design({
@@ -53,11 +60,12 @@
 				valueBinding: "SevenFi.tasksController.summary"
 			}),
 
-			logView : SC.LabelView.design({
-				contentBinding	: 'SevenFi.logController.arrangedObjects',
-				layout			: { centerY: 0, height: 18, right: 8 },
-				textAlign		: SC.ALIGN_RIGHT,
-				valueBinding	: "SevenFi.tasksController.log"
+			statusView: SC.LabelView.design({
+				layout		: { centerY: 0, height: 18, right: 8 },
+				textAlign	: SC.ALIGN_RIGHT,
+				valueBinding: "SevenFi.logController.summary",
+				value 		: "Starting",
+				borderStyle	: SC.BORDER_BEZEL
 			})
 		})
 	})

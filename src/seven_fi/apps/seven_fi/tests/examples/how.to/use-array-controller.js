@@ -25,18 +25,18 @@ test("Should be able to observe a controller's arangedObjects", function() {
 test("Should be able to observe a controller's content via a RangeObserver", function() {
 	given_a_controller_with_an_array_as_its_content();
 
-	var okay = NO;
 	var msg;
 
 	var observer = controller.addRangeObserver(
 		SC.IndexSet.create(0,10),
 		this,
 		function(array, objects, key, indexSet, context) {
-			okay = YES;
 			msg = "Notified about changes to indexes [%@1] with key <%@2>".fmt(
 				indexSet.get('length'),
 				key
 			);
+
+			start();
 		}
 	);
 
@@ -44,9 +44,13 @@ test("Should be able to observe a controller's content via a RangeObserver", fun
 	controller.add('And another message');
 	controller.add('And yet another message');
 
-	while(okay === NO) {}
+	stop();
 
-	ok(okay, msg + " (controller represents <%@1> items)".fmt(controller.get('length')));
+	ok(YES, msg + " (controller represents <%@1> items)".fmt(controller.get('length')));
+});
+
+test("This is pending", function() {
+	expect(0);	
 });
 
 var given_a_controller_with_an_array_as_its_content = function() {
