@@ -31,7 +31,23 @@ test("Can find tracks by artist id", function() {
 });
 
 test("What happens when the artist id does not exist?", function() {
-	ok(YES, "@pending");
+	var anArtist = SevenFi.Artist.create({
+		id : -1
+	});
+
+	controller.topTracks(anArtist);
+
+	whenLoaded(function() {
+		ok(
+			YES,
+			"Loaded <%@1> items for artist <%@2>".fmt(
+				controller.getPath('content.length'),
+				anArtist.get('id')
+			)
+		);
+	});
+
+	stop();
 });
 
 test("Throws an error unless there is an id property on the argument", function() {
@@ -51,6 +67,12 @@ var whenLoaded = function(thenWhat) {
 			
 			start();
 		}
+	});
+
+	SC.Timer.schedule({
+		action: function() {
+			ok(NO, "Timed out")
+		}, interval: 100
 	});
 
 	stop();
