@@ -27,7 +27,7 @@ test("Should be able to observe a controller's content via a RangeObserver", fun
 
 	var msg;
 
-	var observer = controller.addRangeObserver(
+	controller.addRangeObserver(
 		SC.IndexSet.create(0,10),
 		this,
 		function(array, objects, key, indexSet, context) {
@@ -49,8 +49,25 @@ test("Should be able to observe a controller's content via a RangeObserver", fun
 	ok(YES, msg + " (controller represents <%@1> items)".fmt(controller.get('length')));
 });
 
-test("This is pending", function() {
-	expect(0);	
+test("Use a fixed size array as data source", function() {
+	controller = SC.ArrayController.create({
+		add : function(what) {
+			this.get('content').popObject();
+			this.get('content').pushObject(what);
+		}
+	});
+
+	controller.set('content', store = []);
+
+	controller.add("xxx");
+	controller.add("yyy");
+	controller.add("zzz");
+
+	equals(
+		controller.get('length'), 1,
+		"Array has been kept at length 1 and the current entry is <%@1>".
+			fmt(controller.get('content')[0])
+	);
 });
 
 var given_a_controller_with_an_array_as_its_content = function() {

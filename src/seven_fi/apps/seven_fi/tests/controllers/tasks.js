@@ -1,9 +1,3 @@
-// ==========================================================================
-// Project:   SevenFi.tasksController Unit Test
-// Copyright: ©2010 My Company, Inc.
-// ==========================================================================
-/*globals SevenFi module test ok equals same stop start */
-
 module("SevenFi.tasksController");
 
 // TODO: Replace with real unit test for SevenFi.tasksController

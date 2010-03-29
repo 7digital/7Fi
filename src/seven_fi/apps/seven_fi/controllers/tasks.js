@@ -7,16 +7,14 @@ SevenFi.tasksController = SC.ArrayController.create(
 
 		var query = SC.Query.local(
 			SevenFi.Artist,
-			"name = %@",
+			"name = {name}",
 			{ name : theSearchTerm},
 			{ orderBy: 'name'}
 		);
 		
 		this._clear();
-
+		
 		SevenFi.store.find(query);
-
-		SevenFi.tasksController.set('content', SevenFi.store.find(SevenFi.ARTIST_SEARCH_QUERY));
 	},
 
 	onSelected : function(listView) {
@@ -46,6 +44,8 @@ SevenFi.tasksController = SC.ArrayController.create(
 	_clear : function() {
 		SevenFi.store = SC.Store.create({
 			commitRecordsAutomatically: NO
-		}).from('SevenFi.SearchDataSource');	
+		}).from('SevenFi.SearchDataSource');
+
+		SevenFi.tasksController.set('content', SevenFi.store.find(SevenFi.ARTIST_SEARCH_QUERY));
 	}
 });

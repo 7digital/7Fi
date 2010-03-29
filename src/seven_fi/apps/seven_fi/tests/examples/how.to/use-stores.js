@@ -84,6 +84,28 @@ test("How to add new items to a store, for example a log store", function() {
 	);
 });
 
+test("Monitor a store for changes by observing its length", function(){
+	var store = SC.Store.create({});
+	var resultsFuture = store.find(SevenFi.Artist);
+	var message;
+
+	resultsFuture.addObserver('length', this, function() {
+		message = "Done";
+		start();
+	});
+
+	store.createRecord(SevenFi.Artist, {
+		id		: '12',
+		name	: 'Anything'
+	});
+
+	stop();
+
+	var numberOfRecords = resultsFuture.get('length');
+
+	ok(numberOfRecords === 1, "Store contains <%@1> records as expected (%@2)".fmt(numberOfRecords, message))
+});
+
 var newFakeStore = function() {
 	var artistStore = SC.Store.create({});
 

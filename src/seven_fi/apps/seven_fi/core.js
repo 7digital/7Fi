@@ -14,6 +14,10 @@ SevenFi = SC.Application.create(
 		commitRecordsAutomatically: YES
 	}).from('SevenFi.SearchDataSource'),
 
+	trackStore : SC.Store.create({
+		commitRecordsAutomatically: NO
+	}).from('SevenFi.TrackDataSource'),
+
 	log : SC.Store.create({
 		commitRecordsAutomatically: NO
 	}).from('SevenFi.LogDataSource') 
