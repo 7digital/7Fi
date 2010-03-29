@@ -5,11 +5,15 @@ SevenFi.TRACK_SEARCH_QUERY = SC.Query.local(
 	{ orderBy: 'name'}
 );
 
-SevenFi.TrackSearch = SC.DataSource.extend(
+SevenFi.TrackSearchDataSource = SC.DataSource.extend(
 	/** @scope SevenFi.TrackSearch.prototype */ {
 	fetch: function(store, query) {
+		console.debug("FETCH");
+		
 		if (query.parameters != null) {
 			var theUrl = this._formatUrl(query);
+
+			console.debug("TRACK SEARCH: <%@1>".fmt(theUrl));
 
 			SC.Request.getUrl(theUrl).
 				json().
@@ -39,7 +43,7 @@ SevenFi.TrackSearch = SC.DataSource.extend(
 	},
 
 	_formatUrl : function(query) {
-		 return "/7digital/search/artists/toptracks/?artistid=%@1".fmt(query.parameters.artistId);
+		return "/7digital/artist/toptracks?artistid=%@1".fmt(query.parameters.artistId);
 	},
 
 	_fill : function(response, store, query) {
@@ -52,6 +56,8 @@ SevenFi.TrackSearch = SC.DataSource.extend(
 					SevenFi.Track,
 					response.getPath('body').results.results
 				);
+
+				this._log("Done.");
 			} catch (e) {
 				this._log("ERROR %@1".fmt(e.toString()));
 			}

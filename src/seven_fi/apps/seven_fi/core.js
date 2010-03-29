@@ -16,7 +16,7 @@ SevenFi = SC.Application.create(
 
 	trackStore : SC.Store.create({
 		commitRecordsAutomatically: NO
-	}).from('SevenFi.TrackDataSource'),
+	}).from('SevenFi.TrackSearchDataSource'),
 
 	log : SC.Store.create({
 		commitRecordsAutomatically: NO
