@@ -12,7 +12,7 @@ module("SevenFi.ArrayController.Examples", {
 // @see: http://docs.sproutcore.com/symbols/src/_Users_charles_Sites_sproutcore_samples_frameworks_sproutcore_frameworks_foundation_controllers_array.js.html
 test("Can add items to its content provided it extends SC.Array", function() {
 	given_a_controller_with_an_array_as_its_content();
-	
+
 	controller.add('Any string for example');
 
 	equals(controller.get('length', store), 1, "The item was added as expected.")
@@ -76,17 +76,48 @@ test("The 'arrangedObjects' is the controller itself", function(){
 	ok(controller.get('arrangedObjects') === controller, "The 'arrangedObjects' object IS the controller");
 });
 
-test("How does setting 'content' affect 'arrangedObjects'?", function() {
-	given_a_controller_with_an_array_as_its_content();
+test("The 'content' property behaves exactly as expected", function() {
+	var array_0 = ["a", "b", "c"];
+	var array_1 = ["d", "e"];
 
+	given_a_controller();
+
+	when_its_content_is_set_to(array_0);
+	then_its_content_is(array_0);
+	then_it_has_length(3);
+
+	when_its_content_is_set_to(array_1);
+	then_its_content_is(array_1);
+	then_it_has_length(2);
 });
 
 var given_a_controller_with_an_array_as_its_content = function() {
+	given_a_controller();
+	controller.set('content', store = []);
+};
+
+var given_a_controller = function() {
 	controller = SC.ArrayController.create({
 		add : function(what) {
 			this.addObject(what);
 		}
 	});
+};
 
-	controller.set('content', store = []);
+var when_its_content_is_set_to = function(what) {
+	controller.set('content', what);	
+};
+
+var then_it_has_length = function(what) {
+	ok(
+		controller.get('length') === what,
+		"Controller has expected number of items <%@1>".fmt(controller.get('length'))
+	);
+};
+
+var then_its_content_is = function(what) {
+	ok(
+		controller.get('content') === what,
+		"Controller has expected content property <%@1>".fmt(what.toString())
+	);
 };
