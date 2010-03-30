@@ -6,26 +6,23 @@ module("SevenFi.Examples");
 
 // @see: http://wiki.github.com/sproutit/sproutcore/sproutcore-s-modern-model-layer-part-2
 test("How to observe changes in a store and publish the results", function() {
-	ok(YES, "@pending");
-});
+	ok(YES, "@pending: consider observing changes in length. ");
 
-test("How to observe a property on another object using a closure", function() {
-	var observable = new SC.Object({
-		isDone : false
-	});
-
-	var msg = null;
-	
-	observable.addObserver('isDone', this, function() {
-		msg = "Observer notified";
-		start();
-	});
-
-	observable.set('isDone', YES);
-
-	stop();
-
-	ok(YES, msg);
+//	var store = newStore();
+//
+//	store.addObserver('length', function() {
+//		ok(YES, "Done");
+//
+//		start();
+//	});
+//
+//	store.createRecord(SevenFi.Task, {
+//		guid 	: "1",
+//		isDone	: false,
+//		description : "None"
+//	});
+//
+//	stop();
 });
 
 var newController = function() {

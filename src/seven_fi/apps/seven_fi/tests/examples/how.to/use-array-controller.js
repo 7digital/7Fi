@@ -70,15 +70,14 @@ test("Use a fixed size array as data source", function() {
 	);
 });
 
-test("How does setting 'content' affect 'arrangedObjects'?", function() {
+test("The 'arrangedObjects' is the controller itself", function(){
 	given_a_controller_with_an_array_as_its_content();
 
-	var content = controller.get('content');
-	var arrangedObjects = controller.get('arrangedObjects');
+	ok(controller.get('arrangedObjects') === controller, "The 'arrangedObjects' object IS the controller");
+});
 
-	console.debug("content <%@1>, arrangedObjects <%@2>, controller <%@3>".fmt(
-		content.toString(), arrangedObjects.toString(), controller.toString())
-	);
+test("How does setting 'content' affect 'arrangedObjects'?", function() {
+	given_a_controller_with_an_array_as_its_content();
 
 });
 
