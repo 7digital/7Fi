@@ -6,7 +6,9 @@ sc_require('models/task');
 var store, controller;
 
 module("SevenFi.ArrayController.Examples", {
-	setup : function() { }
+	setup : function() {
+		controller = store = null;
+	}
 });
 
 // @see: http://docs.sproutcore.com/symbols/src/_Users_charles_Sites_sproutcore_samples_frameworks_sproutcore_frameworks_foundation_controllers_array.js.html
@@ -91,6 +93,18 @@ test("The 'content' property behaves exactly as expected", function() {
 	then_it_has_length(2);
 });
 
+test("What about when 'content' property is bound to a store?", function () {
+	given_a_controller();
+
+	given_a_store();
+
+	console.debug(store.get('length'));
+
+	controller.set('content', store.find(SevenFi.Task));
+
+	then_it_has_length(3);
+});
+
 var given_a_controller_with_an_array_as_its_content = function() {
 	given_a_controller();
 	controller.set('content', store = []);
@@ -104,6 +118,15 @@ var given_a_controller = function() {
 	});
 };
 
+var given_a_store = function() {
+//	store = SC.Store.create({
+//		commitRecordsAutomatically: NO
+//	});
+
+	store = SC.Store.create().from(SevenFi.Task.FIXTURES);
+};
+
+
 var when_its_content_is_set_to = function(what) {
 	controller.set('content', what);	
 };
@@ -111,7 +134,7 @@ var when_its_content_is_set_to = function(what) {
 var then_it_has_length = function(what) {
 	ok(
 		controller.get('length') === what,
-		"Controller has expected number of items <%@1>".fmt(controller.get('length'))
+		"Controller has expected number of items <%@1>".fmt(what)
 	);
 };
 
